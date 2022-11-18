@@ -22,6 +22,11 @@ if(ENABLE_CLANG_FORMAT)
 
     add_custom_target(clang-format COMMAND ${CLANG_FORMAT_EXE} -style=file -i
                                            ${ALL_SOURCES})
+    add_custom_target(clang-format-check COMMAND ${CLANG_FORMAT_EXE} 
+                        -style=file 
+                        --dry-run
+                        --Werror
+                        -i ${ALL_SOURCES})
   else()
     message(STATUS "clang-format not found.")
   endif()

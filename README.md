@@ -12,7 +12,7 @@ cd app
 
 ```bash
 cd build 
-cmake -DENABLE_TESTING ..
+cmake -DENABLE_TESTING=ON ..
 cmake --build . --target unit_tests
 cd tests
 ./unit_tests
@@ -46,5 +46,16 @@ cmake --build . --target main
 ```bash
 cd build
 cmake -DENABLE_CLANG_FORMAT=ON ..
-cmake --build . --target clang-format # make clang-format
+cmake --build . --target clang-format
 ```
+
+- Build visualization (`graphviz`)
+
+```bash
+cd build
+cmake --graphviz=build.dot ..
+cmake --build . --target main
+dot -Tpng -o build.png build.dot #convert to png image
+```
+
+[info](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
