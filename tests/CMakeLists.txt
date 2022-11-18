@@ -7,10 +7,11 @@ if(ENABLE_TESTING)
     add_executable(${TEST_MAIN}
       ${TEST_SOURCES})
     
-    target_link_libraries(${TEST_MAIN} PUBLIC
-        division)
-    target_link_libraries(${TEST_MAIN} PRIVATE
-        GTest::gtest_main)
+    target_link_libraries(${TEST_MAIN} 
+        PUBLIC
+            division
+        PRIVATE
+            GTest::gtest_main)
 
     include(GoogleTest)
     gtest_discover_tests(${TEST_MAIN})
