@@ -66,7 +66,7 @@ pipeline {
                 sh '''
                 cd build
                 rm CMakeCache.txt
-                cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE -DCMAKE_BUILD_TYPE=Debug ..
+                cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
                 cmake --build . --target coverage
                 '''
             }
