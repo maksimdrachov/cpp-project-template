@@ -18,7 +18,7 @@ pipeline {
 		        cmake ..
 		        cmake --build . --target main
                 cd app
-                ./main
+                ./main 6 3
                 '''
             }
         }
