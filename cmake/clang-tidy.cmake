@@ -1,5 +1,4 @@
-
-if (WITH_CLANG_TIDY)
+if(ENABLE_CLANG_TIDY)
   # find clang-tidy program
   find_program(
     CLANG_TIDY_EXE

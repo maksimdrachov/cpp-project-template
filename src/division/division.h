@@ -24,7 +24,7 @@ struct DivisionResult {
 
 class Division {
   public:
-    explicit Division(Fraction fraction) : fraction{fraction}, result{.division=0, .remainder=0} {}
+    explicit Division(Fraction fraction) : fraction{fraction}, result{.division = 0, .remainder = 0} {}
 
     ~Division() = default;
 

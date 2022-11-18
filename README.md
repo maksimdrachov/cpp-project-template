@@ -40,3 +40,11 @@ cd build
 cmake -DENABLE_CLANG_TIDY=ON ..
 cmake --build . --target main
 ```
+
+- Formatting code (`clang-format`)
+
+```bash
+cd build
+cmake -DENABLE_CLANG_FORMAT=ON ..
+cmake --build . --target clang-format # make clang-format
+```

@@ -43,9 +43,9 @@ if(ENABLE_CLANG_TIDY)
     set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 endif()
 
-# if(ENABLE_CLANG_FORMAT)
-#     include(clang-format)
-# endif()
+if(ENABLE_CLANG_FORMAT)
+    include(clang-format)
+endif()
 
 ### EXTERNAL LIBRARIES
 
