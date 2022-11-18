@@ -33,3 +33,10 @@ cd build/app
 valgrind --leak-check=yes ./main 6 3
 ```
 
+- Static analysis (`clang-tidy`)
+
+```bash
+cd build
+cmake -DENABLE_CLANG_TIDY=ON ..
+cmake --build . --target main
+```

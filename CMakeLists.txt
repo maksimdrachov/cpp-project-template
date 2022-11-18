@@ -38,9 +38,10 @@ if(ENABLE_COVERAGE)
     append_coverage_compiler_flags()
 endif()
 
-# if(ENABLE_CLANG_TIDY)
-#     include(clang-tidy)
-# endif()
+if(ENABLE_CLANG_TIDY)
+    include(clang-tidy)
+    set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+endif()
 
 # if(ENABLE_CLANG_FORMAT)
 #     include(clang-format)
