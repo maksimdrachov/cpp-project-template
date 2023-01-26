@@ -169,3 +169,9 @@ Upon installing Jenkins (inside a Docker container):
 `docker build -t ubuntu-cpp .`
 
 `docker run -v ~/cpp-project-template:/root/cpp-project-template -it ubuntu-cpp`
+
+## Jenkins
+
+[Install and run Jenkins (inside Docker)](https://www.jenkins.io/doc/book/installing/docker/)
+
+
