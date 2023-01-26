@@ -54,7 +54,7 @@ cmake --build . --target coverage
 
 ```bash
 cd build/app
-valgrind --leak-check=yes ./main 6 3
+valgrind --tool=memcheck ./main 6 3
 ```
 
 - Static analysis (`clang-tidy`)
@@ -98,6 +98,30 @@ dot -Tpng -o build.png build.dot #convert to png image
 ```
 
 [additional info](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
+
+## Additional useful commands
+
+- Valgrind
+  - Memory profiling: collect information about how your program uses memory
+  ```bash
+  valgrind --tool=massif program_name
+  ```  
+  - Threading errors: detect and diagnose errors related to the use of threads
+  ```bash
+  valgrind --tool=helgrind program_name
+  ```  
+  - IO errors: detect and diagnose errors related to input/output operations 
+  ```bash
+  valgrind --tool=lackey program_name
+  ```  
+  - Cachegrind: collect detailed information about the use of the cache memory
+  ```bash
+  valgrind --tool=cachegrind program_name
+  ```
+  - Massif: collect detailed information about the memory usage of your program over time
+  ```bash
+  valgrind --tool=massif --time-unit=ms program_name
+  ```
 
 ## Jenkins
 
