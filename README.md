@@ -26,8 +26,7 @@ Tested on Ubuntu.
 cd build
 cmake ..
 cmake --build . --target main
-cd app
-./main
+./app/main
 ```
 
 - Unit testing (`googletest`)
@@ -37,8 +36,7 @@ cd build
 rm CMakeCache.txt
 cmake -DENABLE_TESTING=ON ..
 cmake --build . --target unit_tests
-cd tests
-./unit_tests
+./tests/unit_tests
 ```
 
 - Code coverage (`gcov`)
@@ -46,7 +44,7 @@ cd tests
 ```
 cd build
 rm CMakeCache.txt
-cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build . --target coverage
 ```
 
@@ -97,7 +95,7 @@ cmake --build . --target main
 dot -Tpng -o build.png build.dot #convert to png image
 ```
 
-[additional info](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
+[GraphViz: additional info](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
 
 ## Additional useful commands
 
@@ -166,3 +164,8 @@ Upon installing Jenkins (inside a Docker container):
 - [ ] Add GitHub actions
 - [ ] Add badges
 
+## Docker
+
+`docker build -t ubuntu-cpp .`
+
+`docker run -v ~/cpp-project-template:/root/cpp-project-template -it ubuntu-cpp`

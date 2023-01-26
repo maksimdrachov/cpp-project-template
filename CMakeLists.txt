@@ -14,7 +14,13 @@ option(ENABLE_TESTING      "Enable a Unit Testing build."                OFF)
 option(ENABLE_COVERAGE     "Enable a Code Coverage build."               OFF)
 option(ENABLE_CLANG_TIDY   "Enable to add clang-tidy. (static analysis)" OFF)
 option(ENABLE_CLANG_FORMAT "Enable to add clang-format. (formatting)"    OFF)
-option(ENABLE_VALGRING     "Enable to add valgrind. (memory leak check)" OFF)
+
+# Message
+message(STATUS "ENABLE_WARNINGS: ${ENABLE_WARNINGS}")
+message(STATUS "ENABLE_TESTING: ${ENABLE_TESTING}")
+message(STATUS "ENABLE_COVERAGE: ${ENABLE_COVERAGE}")
+message(STATUS "ENABLE_CLANG_TIDY: ${ENABLE_CLANG_TIDY}")
+message(STATUS "ENABLE_CLANG_FORMAT: ${ENABLE_CLANG_FORMAT}")
 
 ### CMAKE MODULES
 
