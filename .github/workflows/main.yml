@@ -20,6 +20,8 @@ jobs:
         cd build
         pwd
         ls
+        cd ..
+        ls
         cmake ..
         cmake --build . --target main
         cd app
