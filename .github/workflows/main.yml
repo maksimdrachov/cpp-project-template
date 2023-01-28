@@ -18,6 +18,8 @@ jobs:
         rm -rf build
         mkdir build
         cd build
+        pwd
+        ls
         cmake ..
         cmake --build . --target main
         cd app
