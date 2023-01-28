@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches: master
+    
+jobs:
+  build:
+    
+    runs-on: maksimdrachov/ubuntu-cpp
+    
+    steps:
+    - name: cmake version
+      run: cmake --version
