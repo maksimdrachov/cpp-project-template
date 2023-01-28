@@ -9,13 +9,16 @@ on:
 jobs:
   build:
 
-    runs-on: maksimdrachov/ubuntu-cpp
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: configure
       shell: bash
       run: |
+        sudo apt-get update
+        sudo apt-get install cmake
+        gcc --version
         cmake --version
         mkdir build
     - name: build
