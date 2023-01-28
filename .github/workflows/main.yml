@@ -10,13 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: maksimdrachov/ubuntu-cpp:latest
+      image: maksimdrachov/ubuntu-cpp:latest
+      volume:
+        - ${{github.workspace}}:/app
     steps:
     - name: Building
       run: |
+        ls
         cmake --version
         valgrind --version
-        git clone https://github.com/maksimdrachov/cpp-project-template
-        cd cpp-project-template
+        cd /app
         mkdir build
         cd build
         cmake ..
