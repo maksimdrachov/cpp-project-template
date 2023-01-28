@@ -27,3 +27,39 @@ jobs:
         cmake --build . --target main
         cd app
         ./main 6 3
+    - name: Clang-tidy
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_CLANG_TIDY=ON ..
+        cmake --build . --target main
+    - name: Valgrind
+      run: |
+        cd build/app
+        valgrind --leak-check=yes ./main 6 3
+        valgrind --leak-check=yes ./main 6 4
+    - name: Unit tests
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_TESTING=ON ..
+        cmake --build . --target unit_tests
+        cd tests
+        ./unit_tests
+    - name: Code coverage
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
+        cmake --build . --target coverage
+    - name: clang-format
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_CLANG_FORMAT=ON ..
+        cmake --build . --target clang-format-check
+    - name: Running
+      run: |
+        cd build/app
+        ./main 5 3
+
