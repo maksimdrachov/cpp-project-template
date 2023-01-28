@@ -12,6 +12,6 @@ jobs:
     image: 'Dockerfile'
     
   steps:
-    - name: cmake version
-      run: cmake --version
+  - name: cmake version
+    run: cmake --version
 
