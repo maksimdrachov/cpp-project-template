@@ -23,6 +23,9 @@ RUN apt install -y gdb
 # Install valgrind
 RUN apt install -y valgrind
 
+# Install clang-tidy
+RUN apt install -y clang-tidy
+
 # Install clang-format
 RUN apt install -y clang-format
 
