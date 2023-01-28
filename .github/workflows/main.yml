@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: maksimdrachov/ubuntu-cpp:latest
+    container:
       image: maksimdrachov/ubuntu-cpp:latest
       volume:
         - ${{github.workspace}}:/app
