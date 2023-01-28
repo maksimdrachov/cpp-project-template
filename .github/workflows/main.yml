@@ -8,26 +8,82 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    container: maksimdrachov/ubuntu-cpp:latest
     steps:
-    - uses: actions/checkout@v3
-    - name: configure
-      shell: bash
+    - name: Building
       run: |
-        sudo apt-get update
-        sudo apt-get install cmake
-        gcc --version
         cmake --version
+        valgrind --version
+        rm -rf build
         mkdir build
-    - name: build
-      shell: bash
-      run: |
         cd build
         cmake ..
         cmake --build . --target main
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+        cd app
+        ./main 6 3
+
+  static-analysis:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: Clang-tidy
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_CLANG_TIDY=ON ..
+        cmake --build . --target main
+
+  valgrind-check:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: Valgrind
+      run: |
+        cd build/app
+        valgrind --leak-check=yes ./main 6 3
+        valgrind --leak-check=yes ./main 6 4
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: Unit tests
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_TESTING=ON ..
+        cmake --build . --target unit_tests
+        cd tests
+        ./unit_tests
+
+  code-coverage:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: Code coverage
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_TESTING=ON -DENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
+        cmake --build . --target coverage
+
+  style:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: clang-format
+      run: |
+        cd build
+        rm CMakeCache.txt
+        cmake -DENABLE_CLANG_FORMAT=ON ..
+        cmake --build . --target clang-format-check
+
+  running:
+    runs-on: ubuntu-latest
+    container: maksimdrachov/ubuntu-cpp:latest
+    steps:
+    - name: Running
+      run: |
+        cd build/app
+        ./main 5 3
