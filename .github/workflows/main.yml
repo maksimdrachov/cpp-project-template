@@ -19,7 +19,7 @@ jobs:
         ls
         cmake --version
         valgrind --version
-        cd /app
+        cd /app/cpp-project-template
         mkdir build
         cd build
         cmake ..
