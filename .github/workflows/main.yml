@@ -9,14 +9,21 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: maksimdrachov/ubuntu-cpp
 
     steps:
     - uses: actions/checkout@v3
     - name: configure
-      run: ./configure
-    - name: make
-      run: make
+      shell: bash
+      run: |
+        cmake --version
+        mkdir build
+    - name: build
+      shell: bash
+      run: |
+        cd build
+        cmake ..
+        cmake --build . --target main
     - name: make check
       run: make check
     - name: make distcheck
