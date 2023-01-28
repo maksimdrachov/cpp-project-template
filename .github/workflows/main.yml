@@ -12,11 +12,10 @@ jobs:
     container:
       image: maksimdrachov/ubuntu-cpp:latest
       volumes:
-        - cpp-project-template:/app
+        - ${{github.workspace}}:/app
     steps:
     - name: Building
       run: |
-        ls
         cmake --version
         valgrind --version
         cd /app
