@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: maksimdrachov/ubuntu-cpp:latest
-      volume:
-        - ${{github.workspace}}:/app
+      volumes:
+        - cpp-project-template:/app
     steps:
     - name: Building
       run: |
