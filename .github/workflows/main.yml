@@ -19,7 +19,7 @@ jobs:
         cmake --version
         valgrind --version
         cd /app
-        ls
+        ls -a
         mkdir build
         cd build
         cmake ..
