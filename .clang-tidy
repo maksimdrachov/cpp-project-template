@@ -1,3 +1,42 @@
-Checks: '-*,modernize-*,-modernize-use-trailing-return-type, -modernize-return-braced-init-list, -modernize-use-auto, -modernize-use-nodiscard'
+InheritParentConfig: false  # Because this is the top-level file in this repository.
+Checks: >-
+  boost-*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  google-*,
+  hicpp-*,
+  llvm-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-avoid-const-or-ref-data-members,
+  -readability-identifier-length,
+  -google-readability-todo,
+  -readability-avoid-const-params-in-decls,
+  -readability-identifier-length,
+  -llvm-header-guard,
+  -llvm-include-order,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-unchecked-optional-access,
+  -bugprone-dynamic-static-initializers,
+  -*-use-trailing-return-type,
+  -*-array-*decay,
+  -hicpp-named-parameter,
+  -readability-named-parameter,
+  -modernize-pass-by-value,
+CheckOptions:
+  - key:   readability-function-cognitive-complexity.Threshold
+    value: '90'
+  - key:   readability-magic-numbers.IgnoredIntegerValues
+    value: '1;2;3;4;5;10;20;60;100;1000'
+  - key:   readability-magic-numbers.IgnoredFloatingPointValues
+    value: '1e-9;1e-6;1e-3;0.0;1.0;100.0;1e3;1e4;1e5;1e6;1e9;0.5;2.0;3.0'
 WarningsAsErrors: '*'
-HeaderFilterRegex: 'src/.*'
+HeaderFilterRegex: '.*\.hpp'
+AnalyzeTemporaryDtors: false
+FormatStyle: file
